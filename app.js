@@ -41,10 +41,12 @@ function niceNumber(v) {
 
 function formatAnswer(q) {
   const num = niceNumber(q.answer);
-  if (q.unit === "rupees") return `₹${num}`;
-  if (q.unit === "percent") return `${num}%`;
-  if (q.unit === "points") return `${num} percentage points`;
-  return num;
+  let out;
+  if (q.unit === "rupees") out = `₹${num}`;
+  else if (q.unit === "percent") out = `${num}%`;
+  else if (q.unit === "points") out = `${num} percentage points`;
+  else out = num;
+  return q.suffix ? `${out} ${q.suffix}` : out;
 }
 
 function parseNumber(raw) {
@@ -184,6 +186,12 @@ function renderQuestion() {
   $("progress-fill").style.width = `${(state.index / state.queue.length) * 100}%`;
 
   $("q-part").textContent = `Question ${q.n} · ${q.sectionTitle}`;
+  if (q.tag) {
+    $("q-tag").textContent = q.tag;
+    $("q-tag").classList.remove("hidden");
+  } else {
+    $("q-tag").classList.add("hidden");
+  }
   $("q-text").textContent = q.text;
 
   if (q.formula) {
@@ -232,6 +240,7 @@ function isCorrect(q) {
   if (q.type === "choice") return state.chosen === q.answer;
   const given = parseNumber($("answer-input").value);
   if (given === null) return null; // nothing typed
+  if (q.min != null && q.max != null) return given >= q.min && given <= q.max;
   return Math.abs(given - q.answer) <= toleranceFor(q);
 }
 
