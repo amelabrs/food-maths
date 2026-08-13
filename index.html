@@ -46,6 +46,14 @@
 
     <p class="intro" id="setup-blurb"></p>
 
+    <label class="shuffle-row hidden" id="shuffle-row">
+      <input type="checkbox" id="shuffle-check">
+      <span class="shuffle-text">
+        <span class="shuffle-title">🎲 Shuffle the numbers</span>
+        <span class="shuffle-note" id="shuffle-note"></span>
+      </span>
+    </label>
+
     <h2 class="section-label" id="setup-section-label">Choose what to practise</h2>
     <div id="section-list" class="part-list"></div>
 
@@ -121,6 +129,7 @@
 
     <div class="results-actions">
       <button id="retry-missed-btn" class="btn btn-primary">Practise the ones I missed</button>
+      <button id="new-numbers-btn" class="btn btn-quiet hidden">🎲 Same quiz, new numbers</button>
       <button id="again-btn" class="btn btn-quiet">Choose sections again</button>
       <button id="home-btn" class="btn btn-quiet">All quizzes</button>
     </div>
@@ -130,6 +139,7 @@
 <script src="quiz-business.js"></script>
 <script src="quiz-food-cost.js"></script>
 <script src="questions.js"></script>
+<script src="variants.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

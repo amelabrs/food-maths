@@ -5,6 +5,7 @@ const STORE_KEY = "foodMaths.v2";
 
 const state = {
   quiz: null,
+  shuffle: false,        // regenerate the numbers each run
   selected: new Set(),   // selected section ids
   queue: [],             // questions for this run
   index: 0,
@@ -120,14 +121,28 @@ function renderHome() {
 
 function openQuiz(quiz) {
   state.quiz = quiz;
+  state.shuffle = !!load().shuffle;
   state.selected = new Set(quiz.sections.map(s => s.id));
   $("setup-icon").textContent = quiz.icon;
   $("setup-title").textContent = quiz.title;
   $("setup-tagline").textContent = quiz.tagline;
   $("setup-blurb").textContent = quiz.blurb;
   $("setup-section-label").textContent = `Choose what to practise`;
+  renderShuffleToggle();
   renderSections();
   show("screen-setup");
+}
+
+function renderShuffleToggle() {
+  const all = quizQuestions(state.quiz);
+  const covered = shuffleCoverage(state.quiz.id, all);
+  const row = $("shuffle-row");
+  if (covered === 0) { row.classList.add("hidden"); return; }
+  row.classList.remove("hidden");
+  $("shuffle-check").checked = state.shuffle;
+  $("shuffle-note").textContent = covered === all.length
+    ? "Same questions, different figures every time — so you can't learn the answers by heart."
+    : `Same questions, different figures every time (${covered} of ${all.length} questions).`;
 }
 
 function renderSections() {
@@ -168,6 +183,16 @@ function updateStartBtn() {
 }
 
 /* ---------------- quiz flow ---------------- */
+
+// Build the run. With shuffle on, every question is rebuilt from one fresh
+// scenario, so questions that share a story stay consistent with each other.
+function buildQueue(questions) {
+  if (!state.shuffle) return questions;
+  const set = VARIANTS[state.quiz.id];
+  if (!set) return questions;
+  const scenario = set.scenario();
+  return questions.map(q => shuffleQuestion(state.quiz.id, q, scenario));
+}
 
 function startQuiz(questions) {
   state.queue = questions;
@@ -383,6 +408,7 @@ function finish() {
     });
   }
   $("retry-missed-btn").classList.toggle("hidden", shaky.length === 0);
+  $("new-numbers-btn").classList.toggle("hidden", !state.shuffle);
 
   // best score, only for a full run of the quiz
   if (total === quizQuestions(quiz).length) {
@@ -399,7 +425,11 @@ function finish() {
 
 /* ---------------- wiring ---------------- */
 
-$("start-btn").addEventListener("click", () => startQuiz(selectedQuestions()));
+$("start-btn").addEventListener("click", () => startQuiz(buildQueue(selectedQuestions())));
+$("shuffle-check").addEventListener("change", (e) => {
+  state.shuffle = e.target.checked;
+  save({ ...load(), shuffle: state.shuffle });
+});
 $("check-btn").addEventListener("click", checkAnswer);
 $("next-btn").addEventListener("click", nextQuestion);
 $("skip-btn").addEventListener("click", showMeHow);
@@ -408,6 +438,7 @@ $("quit-btn").addEventListener("click", () => show("screen-setup"));
 $("again-btn").addEventListener("click", () => show("screen-setup"));
 $("home-btn").addEventListener("click", renderHome);
 $("retry-missed-btn").addEventListener("click", () => startQuiz(state.shaky.map(q => ({ ...q }))));
+$("new-numbers-btn").addEventListener("click", () => startQuiz(buildQueue(selectedQuestions())));
 
 $("answer-input").addEventListener("keydown", (e) => {
   if (e.key === "Enter") {

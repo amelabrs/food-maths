@@ -27,6 +27,29 @@ stock & monitoring, full scenario.
   with its working. **Practise the ones I missed** re-runs just those.
 - Best score per quiz is remembered in the browser.
 
+## Shuffling the numbers
+
+**🎲 Shuffle the numbers** on the setup screen regenerates every figure in the quiz
+each time you start, so the questions stay the same but the answers can't be
+memorised. It is ordinary arithmetic in [variants.js](variants.js) — no AI, no
+server, nothing fetched.
+
+Each quiz has a *scenario generator* that picks one self-consistent set of numbers
+per run, and a *recipe* per question that rebuilds the wording, the answer and the
+working from it. Because every question draws on the same scenario, the ones that
+share a story stay in step — a shuffled Part 5 still has Q27 subtracting Q26's
+ingredient cost from Q25's sales.
+
+The generators pick numbers that keep the maths teachable: ingredient costs are a
+clean percentage of the selling price, rent divides evenly by 30, sales targets
+divide exactly by the average bill, and the food-cost chain is built backwards from
+the percentage so the shop is always over target, never under. A tie in "which item
+leaves more?" is ruled out by resampling.
+
+All 54 questions are templated. To add a recipe, give it `text`, `answer` and
+`working` (a string, or an array of steps); anything it omits — unit, tag, hint —
+is inherited from the original question.
+
 ## Editing the questions
 
 The JSON files in `data/` are the source of truth. The `.js` quiz files are
@@ -48,6 +71,7 @@ stop the build with a message.
 | `data/food-cost.json` | Quiz 2 — questions, hints and solution steps in one file |
 | `quiz-business.js`, `quiz-food-cost.js` | Generated quiz data |
 | `questions.js` | The `QUIZZES` registry — add a quiz here to list it on the home screen |
+| `variants.js` | Scenario generators and per-question recipes for number shuffling |
 | `app.js` | Quiz engine: flow, answer checking, scoring |
 | `index.html`, `style.css` | Screens and styling |
 
