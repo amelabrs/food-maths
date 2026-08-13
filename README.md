@@ -1,7 +1,7 @@
 # Food Maths — Practice Quizzes
 
-Gentle practice for food business owners who don't feel
-confident with numbers. Two quizzes, worked explanations for every answer.
+Gentle practice for food business owners who don't feel confident with numbers.
+Three quizzes, with a worked explanation for every answer.
 
 **Live:** https://amelabrs.github.io/food-maths/
 
@@ -24,7 +24,7 @@ operating cycle, and inventory & GST. Every answer comes with an explanation.
 
 ## How it works
 
-- Pick a quiz, then pick any combination of its parts or levels.
+- Pick a quiz, then pick any combination of its parts, levels or topics.
 - Type a rupee amount, a percentage or a count — `₹`, `%` and commas are ignored,
   so `2,100` and `2100` both work.
 - Get it wrong and you get a second try with a hint before the answer is shown.
@@ -53,9 +53,10 @@ divide exactly by the average bill, and the food-cost chain is built backwards f
 the percentage so the shop is always over target, never under. A tie in "which item
 leaves more?" is ruled out by resampling.
 
-All 54 questions are templated. To add a recipe, give it `text`, `answer` and
+All 54 maths questions are templated. To add a recipe, give it `text`, `answer` and
 `working` (a string, or an array of steps); anything it omits — unit, tag, hint —
-is inherited from the original question.
+is inherited from the original question. A question with no recipe simply keeps its
+numbers, so a partly-templated quiz still works.
 
 ## Editing the questions
 
