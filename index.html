@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Business Maths — Starter Quiz</title>
+<meta name="description" content="A gentle practice quiz for food business owners who don't feel confident with numbers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫖</text></svg>">
+</head>
+<body>
+
+<!-- ============ START ============ -->
+<section id="screen-start" class="screen active">
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-badge">🫖 ₹ 🥪</div>
+      <h1>Food Business Maths</h1>
+      <p class="hero-sub">A starter quiz</p>
+    </header>
+
+    <p class="intro">
+      A gentle practice quiz for business owners who do not feel confident with maths.
+      Use a calculator if you like — the goal is to build the habit of
+      <strong>checking your numbers</strong>.
+    </p>
+
+    <div class="pill-row">
+      <span class="pill">28 questions</span>
+      <span class="pill">5 parts</span>
+      <span class="pill">No time limit</span>
+    </div>
+
+    <h2 class="section-label">Choose what to practise</h2>
+    <div id="part-list" class="part-list"></div>
+
+    <button id="start-btn" class="btn btn-primary btn-big">Start the quiz →</button>
+    <p id="resume-note" class="resume-note hidden"></p>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="screen-quiz" class="screen">
+  <div class="quiz-top">
+    <button id="quit-btn" class="icon-btn" aria-label="Back to start">←</button>
+    <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+    <div id="progress-count" class="progress-count">1 / 28</div>
+  </div>
+
+  <div class="wrap wrap-quiz">
+    <div class="card" id="q-card">
+      <div class="q-part" id="q-part"></div>
+      <p class="q-text" id="q-text"></p>
+      <div class="formula hidden" id="q-formula"></div>
+
+      <!-- numeric answer -->
+      <div class="answer-area" id="answer-number">
+        <div class="input-row">
+          <span class="adorn" id="input-adorn">₹</span>
+          <input id="answer-input" type="text" inputmode="decimal" autocomplete="off"
+                 placeholder="Type your answer" aria-label="Your answer">
+        </div>
+      </div>
+
+      <!-- multiple choice -->
+      <div class="answer-area hidden" id="answer-choice">
+        <div class="options" id="options"></div>
+      </div>
+
+      <div class="feedback hidden" id="feedback">
+        <div class="feedback-head" id="feedback-head"></div>
+        <div class="feedback-working" id="feedback-working"></div>
+      </div>
+
+      <div class="actions">
+        <button id="check-btn" class="btn btn-primary">Check my answer</button>
+        <button id="next-btn" class="btn btn-primary hidden">Next question →</button>
+        <button id="skip-btn" class="btn btn-quiet">Show me how</button>
+      </div>
+    </div>
+
+    <p class="calc-note">Calculator allowed. Nobody is watching the clock.</p>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="screen-results" class="screen">
+  <div class="wrap">
+    <div class="score-card">
+      <div class="score-emoji" id="score-emoji">🎉</div>
+      <div class="score-big"><span id="score-num">0</span><span class="score-of" id="score-of">/ 28</span></div>
+      <p class="score-line" id="score-line"></p>
+    </div>
+
+    <h2 class="section-label">How each part went</h2>
+    <div id="breakdown" class="breakdown"></div>
+
+    <div id="review-block">
+      <h2 class="section-label">Worth another look</h2>
+      <div id="review-list" class="review-list"></div>
+    </div>
+
+    <div class="results-actions">
+      <button id="retry-missed-btn" class="btn btn-primary">Practise the ones I missed</button>
+      <button id="restart-btn" class="btn btn-quiet">Back to the start</button>
+    </div>
+  </div>
+</section>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
