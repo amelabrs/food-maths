@@ -1,6 +1,6 @@
 # Food Maths — Practice Quizzes
 
-Gentle, calculator-friendly maths practice for food business owners who don't feel
+Gentle practice for food business owners who don't feel
 confident with numbers. Two quizzes, worked explanations for every answer.
 
 **Live:** https://amelabrs.github.io/food-maths/
@@ -16,6 +16,12 @@ Builds from simple multiplication up to full food-cost and menu-pricing
 calculations: warm-up, ingredient cost, totals & wastage, menu pricing,
 stock & monitoring, full scenario.
 
+**Food Cost Concepts — Revision Quiz** (36 questions, 8 topics)
+Concept recall rather than arithmetic, from the Food Cost Calculator lecture:
+unit economics, the financial metrics framework, food cost fundamentals, menu
+pricing strategy, building the calculator, daily and weekly monitoring, the
+operating cycle, and inventory & GST. Every answer comes with an explanation.
+
 ## How it works
 
 - Pick a quiz, then pick any combination of its parts or levels.
@@ -27,12 +33,13 @@ stock & monitoring, full scenario.
   with its working. **Practise the ones I missed** re-runs just those.
 - Best score per quiz is remembered in the browser.
 
-## Shuffling the numbers
+## Shuffling
 
-**🎲 Shuffle the numbers** on the setup screen regenerates every figure in the quiz
-each time you start, so the questions stay the same but the answers can't be
-memorised. It is ordinary arithmetic in [variants.js](variants.js) — no AI, no
-server, nothing fetched.
+The toggle on the setup screen does whatever that quiz allows, and labels itself
+accordingly: **🎲 Shuffle the numbers** on the two maths quizzes, **🎲 Shuffle the
+answers** on the concepts quiz, where it reorders the options instead. True/False
+questions keep their order. It is ordinary arithmetic in [variants.js](variants.js)
+— no AI, no server, nothing fetched.
 
 Each quiz has a *scenario generator* that picks one self-consistent set of numbers
 per run, and a *recipe* per question that rebuilds the wording, the answer and the
@@ -58,18 +65,20 @@ generated — don't edit them by hand.
 ```bash
 node tools/build-business.js    # data/business-maths.json + business-extras.json -> quiz-business.js
 node tools/build-food-cost.js   # data/food-cost.json                             -> quiz-food-cost.js
+node tools/build-concepts.js    # data/concepts.json                              -> quiz-concepts.js
 ```
 
-Both scripts validate as they go: unknown units, an unplaced question, a
-multiple-choice answer that isn't one of its options, or a missing explanation all
-stop the build with a message.
+All three validate as they go: unknown units, an unplaced question, a topic with no
+icon, a multiple-choice answer that isn't one of its options, or a missing
+explanation all stop the build with a message.
 
 | File | Purpose |
 | --- | --- |
 | `data/business-maths.json` | Quiz 1 questions, answers, options, formula hints |
 | `data/business-extras.json` | Quiz 1 parts, hints and worked explanations |
 | `data/food-cost.json` | Quiz 2 — questions, hints and solution steps in one file |
-| `quiz-business.js`, `quiz-food-cost.js` | Generated quiz data |
+| `data/concepts.json` | Quiz 3 — concept questions, options and explanations |
+| `quiz-business.js`, `quiz-food-cost.js`, `quiz-concepts.js` | Generated quiz data |
 | `questions.js` | The `QUIZZES` registry — add a quiz here to list it on the home screen |
 | `variants.js` | Scenario generators and per-question recipes for number shuffling |
 | `app.js` | Quiz engine: flow, answer checking, scoring |

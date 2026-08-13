@@ -325,6 +325,8 @@ h1 { font-size: 38px; line-height: 1.15; margin: 0 0 6px; letter-spacing: -.5px;
 .option {
   text-align: left;
   font: inherit;
+  font-size: 16px;
+  line-height: 1.45;
   background: var(--bg);
   border: 1.5px solid var(--line);
   border-radius: 14px;

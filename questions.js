@@ -4,4 +4,4 @@
    Each question: { n, text, type, unit, answer, tolerance?, formula?, hint?,
                     working? | steps[], options? } */
 
-const QUIZZES = [QUIZ_BUSINESS, QUIZ_FOOD_COST];
+const QUIZZES = [QUIZ_BUSINESS, QUIZ_FOOD_COST, QUIZ_CONCEPTS];

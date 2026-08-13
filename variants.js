@@ -486,12 +486,24 @@ const VARIANTS = {
   foodcost: { scenario: foodCostScenario, recipes: FOOD_COST_RECIPES }
 };
 
-/* Rebuild a question from its recipe. Returns the original untouched if the quiz
-   has no recipe for it, so a partly-templated quiz still works. */
+/* Put a multiple choice question's options in a new order, moving the correct
+   answer with them. True/False keeps its order — it reads in that order. */
+function shuffleOptions(q) {
+  if (q.type !== "choice" || q.fixedOrder || !Array.isArray(q.options)) return q;
+  const order = q.options.map((_, i) => i);
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  return { ...q, options: order.map(i => q.options[i]), answer: order.indexOf(q.answer) };
+}
+
+/* Rebuild a question from its recipe, then reorder any options. A question with no
+   recipe keeps its numbers, so a partly-templated quiz still works. */
 function shuffleQuestion(quizId, q, scenario) {
   const set = VARIANTS[quizId];
   const recipe = set && set.recipes[q.n];
-  if (!recipe) return q;
+  if (!recipe) return shuffleOptions(q);
 
   const val = (v) => (typeof v === "function" ? v(scenario) : v);
   const out = { ...q, text: val(recipe.text), answer: val(recipe.answer) };
@@ -509,12 +521,17 @@ function shuffleQuestion(quizId, q, scenario) {
   delete out.max;
   if (recipe.tolerance != null) out.tolerance = recipe.tolerance;
 
-  return out;
+  return shuffleOptions(out);
 }
 
-// how many of a quiz's questions can be shuffled
-function shuffleCoverage(quizId, questions) {
+/* What shuffling would actually change in this quiz:
+   figures = questions whose numbers get regenerated,
+   order   = questions whose answer options get reordered. */
+function shuffleSummary(quizId, questions) {
   const set = VARIANTS[quizId];
-  if (!set) return 0;
-  return questions.filter(q => set.recipes[q.n]).length;
+  return {
+    figures: set ? questions.filter(q => set.recipes[q.n]).length : 0,
+    order: questions.filter(q => q.type === "choice" && !q.fixedOrder && q.options).length,
+    total: questions.length
+  };
 }

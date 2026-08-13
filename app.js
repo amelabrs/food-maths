@@ -134,15 +134,22 @@ function openQuiz(quiz) {
 }
 
 function renderShuffleToggle() {
-  const all = quizQuestions(state.quiz);
-  const covered = shuffleCoverage(state.quiz.id, all);
+  const { figures, order, total } = shuffleSummary(state.quiz.id, quizQuestions(state.quiz));
   const row = $("shuffle-row");
-  if (covered === 0) { row.classList.add("hidden"); return; }
+  if (figures === 0 && order === 0) { row.classList.add("hidden"); return; }
   row.classList.remove("hidden");
   $("shuffle-check").checked = state.shuffle;
-  $("shuffle-note").textContent = covered === all.length
-    ? "Same questions, different figures every time — so you can't learn the answers by heart."
-    : `Same questions, different figures every time (${covered} of ${all.length} questions).`;
+
+  if (figures === 0) {
+    $("shuffle-title").textContent = "🎲 Shuffle the answers";
+    $("shuffle-note").textContent =
+      "The answer options come up in a new order every time, so you can't learn them by position.";
+  } else {
+    $("shuffle-title").textContent = "🎲 Shuffle the numbers";
+    $("shuffle-note").textContent = figures === total
+      ? "Same questions, different figures every time — so you can't learn the answers by heart."
+      : `Same questions, different figures every time (${figures} of ${total} questions).`;
+  }
 }
 
 function renderSections() {
@@ -189,8 +196,7 @@ function updateStartBtn() {
 function buildQueue(questions) {
   if (!state.shuffle) return questions;
   const set = VARIANTS[state.quiz.id];
-  if (!set) return questions;
-  const scenario = set.scenario();
+  const scenario = set ? set.scenario() : null;
   return questions.map(q => shuffleQuestion(state.quiz.id, q, scenario));
 }
 
@@ -298,6 +304,7 @@ function setFeedback(kind, head, body) {
 function nudgeFor(q) {
   if (q.hint) return q.hint;
   if (q.formula) return `Try the formula: ${q.formula}`;
+  if (q.type === "choice") return "Read the options again — two of them are close, but only one fits.";
   return "Read the question once more and check each number.";
 }
 
@@ -362,8 +369,9 @@ function finish() {
 
   const pct = correct / total;
   $("score-emoji").textContent = pct === 1 ? "🏆" : pct >= 0.75 ? "🎉" : pct >= 0.5 ? "👍" : "🌱";
+  const anyNumeric = state.queue.some(q => q.type !== "choice");
   $("score-line").textContent = pct === 1
-    ? "Every one right. Your numbers are in safe hands."
+    ? (anyNumeric ? "Every one right. Your numbers are in safe hands." : "Every one right. That lecture has stuck.")
     : pct >= 0.75
       ? `${clean} of those came first time. Strong work — look at the few below and you're there.`
       : pct >= 0.5

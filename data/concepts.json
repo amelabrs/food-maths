@@ -1,0 +1,518 @@
+{
+  "quiz_title": "Food Cost & Financial Management — Concept Revision Quiz",
+  "description": "A set of concept-recall questions covering the substantive teaching content of the Food Cost Calculator lecture (financial metrics, food costing, menu pricing, daily/weekly monitoring, and special topics). The narrative 'Fun Version' retelling of the same material is intentionally excluded, as are the promotional Gold Membership details.",
+  "source": "Food_Cost_Calculator_Lecture_final.docx",
+  "topics": [
+    "Unit Economics & Delegation",
+    "Financial Metrics Framework",
+    "Food Cost Fundamentals",
+    "Menu Pricing Strategy",
+    "Building & Using the Calculator",
+    "Daily & Weekly Monitoring",
+    "The Operating Cycle & Key Formulas",
+    "Special Topics: Inventory & GST"
+  ],
+  "question_count": 36,
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Unit Economics & Delegation",
+      "type": "multiple_choice",
+      "question": "According to the lecture, what is described as \"the heart of the business\"?",
+      "options": [
+        "Marketing",
+        "Unit economics",
+        "Staff management",
+        "Customer service"
+      ],
+      "correct_answer": "Unit economics",
+      "explanation": "The lecture opens by establishing unit economics as the central, non-negotiable foundation of a profitable business."
+    },
+    {
+      "id": 2,
+      "topic": "Unit Economics & Delegation",
+      "type": "multiple_choice",
+      "question": "What key distinction does the lecture draw between a for-profit business and charitable work?",
+      "options": [
+        "For-profit businesses must track expenses more carefully",
+        "A for-profit business cannot systematically operate at a loss while serving customers",
+        "Charitable work doesn't need a business plan",
+        "There is no meaningful difference"
+      ],
+      "correct_answer": "A for-profit business cannot systematically operate at a loss while serving customers",
+      "explanation": "Serving customers can't mean deliberately or systematically losing money if the venture is meant to be for-profit."
+    },
+    {
+      "id": 3,
+      "topic": "Unit Economics & Delegation",
+      "type": "multiple_choice",
+      "question": "Which statement best reflects the lecture's view on entrepreneurial skill?",
+      "options": [
+        "An entrepreneur must personally master finance, cooking, marketing, and operations",
+        "An entrepreneur should recognise which capabilities the business needs and make sure the business has them — not necessarily do everything themselves",
+        "Delegation is a sign of weak leadership",
+        "Only large businesses can afford to delegate"
+      ],
+      "correct_answer": "An entrepreneur should recognise which capabilities the business needs and make sure the business has them — not necessarily do everything themselves",
+      "explanation": "The key entrepreneurial skill is recognising required capabilities and ensuring the business has them, via employees, consultants, freelancers, or other specialists."
+    },
+    {
+      "id": 4,
+      "topic": "Financial Metrics Framework",
+      "type": "multiple_choice",
+      "question": "In the revenue breakdown framework, what comes right after \"Food, Gas & Packaging\" is subtracted from Total Revenue?",
+      "options": [
+        "Net Margin",
+        "Gross Margin",
+        "Rent",
+        "Operating Costs"
+      ],
+      "correct_answer": "Gross Margin",
+      "explanation": "The chain is: Food + Gas + Packaging → Gross Margin → Rent + Employees + Marketing + Misc → Net Margin."
+    },
+    {
+      "id": 5,
+      "topic": "Financial Metrics Framework",
+      "type": "multiple_choice",
+      "question": "How should the lecture's percentage benchmarks (e.g. 30% food cost, 70% gross margin) be treated?",
+      "options": [
+        "As fixed rules every outlet must follow",
+        "As benchmarks/frameworks to adapt to your own location and business model",
+        "As legal requirements",
+        "As targets only relevant to large chains"
+      ],
+      "correct_answer": "As benchmarks/frameworks to adapt to your own location and business model",
+      "explanation": "The lecture is explicit: these are frameworks, not rigid rules — actual performance depends on location, rent, and business model."
+    },
+    {
+      "id": 6,
+      "topic": "Financial Metrics Framework",
+      "type": "multiple_choice",
+      "question": "Why might one tea outlet charge ₹20 for a cup while another charges only ₹10?",
+      "options": [
+        "Different quality of tea leaves only",
+        "Differences in their cost structure, particularly rent",
+        "One outlet is simply more popular",
+        "Government price controls"
+      ],
+      "correct_answer": "Differences in their cost structure, particularly rent",
+      "explanation": "A high-rent, high-street location can't necessarily sustain the same menu price as a low-rent location."
+    },
+    {
+      "id": 7,
+      "topic": "Financial Metrics Framework",
+      "type": "multiple_choice",
+      "question": "If a business has high rent, what does the lecture suggest as ways to compensate?",
+      "options": [
+        "Increase menu prices, increase sales volume, or otherwise adjust the cost structure",
+        "Reduce staff wages only",
+        "Stop tracking food cost",
+        "Move to a smaller kitchen"
+      ],
+      "correct_answer": "Increase menu prices, increase sales volume, or otherwise adjust the cost structure",
+      "explanation": "Menu pricing must be compatible with the economics of the location."
+    },
+    {
+      "id": 8,
+      "topic": "Financial Metrics Framework",
+      "type": "multiple_choice",
+      "question": "What is the \"core principle\" the lecture emphasises about financial management?",
+      "options": [
+        "Achieving a predetermined set of percentages exactly",
+        "Continually understanding where the money is going, by monitoring Revenue → Food Cost → Gross Margin → Operating Costs → Profit",
+        "Copying competitor pricing",
+        "Minimising all costs regardless of quality"
+      ],
+      "correct_answer": "Continually understanding where the money is going, by monitoring Revenue → Food Cost → Gross Margin → Operating Costs → Profit",
+      "explanation": "Financial management is about understanding where the money is going, not blindly hitting fixed percentages."
+    },
+    {
+      "id": 9,
+      "topic": "Food Cost Fundamentals",
+      "type": "multiple_choice",
+      "question": "Besides controlling costs, what other major benefit of calculating food cost does the lecture highlight?",
+      "options": [
+        "It automatically increases sales",
+        "It helps detect wastage by comparing estimated vs. actual food-cost percentages",
+        "It eliminates the need for a POS system",
+        "It replaces the need for staff training"
+      ],
+      "correct_answer": "It helps detect wastage by comparing estimated vs. actual food-cost percentages",
+      "explanation": "If estimated wastage is 5% but actual figures show 8–10%, that gap is a warning sign worth investigating."
+    },
+    {
+      "id": 10,
+      "topic": "Food Cost Fundamentals",
+      "type": "true_false",
+      "question": "True or False: According to the lecture, improving food-cost control by even a small percentage can increase profit without needing more customers.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct_answer": "True",
+      "explanation": "The same sales volume can become more profitable purely through better cost control."
+    },
+    {
+      "id": 11,
+      "topic": "Food Cost Fundamentals",
+      "type": "multiple_choice",
+      "question": "What does the lecture say a menu price should NOT be based only on?",
+      "options": [
+        "Ingredient ratios",
+        "What competitors charge for a similar item",
+        "Local market prices",
+        "Wastage percentage"
+      ],
+      "correct_answer": "What competitors charge for a similar item",
+      "explanation": "A menu price should not be determined only by looking at what competitors charge — it must reflect your own cost structure."
+    },
+    {
+      "id": 12,
+      "topic": "Food Cost Fundamentals",
+      "type": "multiple_choice",
+      "question": "For conservative costing, what pricing approach does the lecture recommend when costing an ingredient like onions?",
+      "options": [
+        "Use the lowest price you can find",
+        "Use the maximum/current market price",
+        "Use last year's average price",
+        "Ignore ingredient price fluctuations"
+      ],
+      "correct_answer": "Use the maximum/current market price",
+      "explanation": "Using the maximum/current market price keeps the costing conservative, so real costs don't come in higher than planned."
+    },
+    {
+      "id": 13,
+      "topic": "Food Cost Fundamentals",
+      "type": "multiple_choice",
+      "question": "Why does the lecture insist on calculating the actual cost of a menu item rather than estimating it?",
+      "options": [
+        "Estimating is illegal",
+        "The exact figures depend on local purchase prices and recipe, so only actual calculation reveals the true cost",
+        "Estimating takes longer than calculating",
+        "Competitors always calculate exactly"
+      ],
+      "correct_answer": "The exact figures depend on local purchase prices and recipe, so only actual calculation reveals the true cost",
+      "explanation": "\"A cup of tea costs about ₹3\" is only meaningful once you know exactly why it costs ₹3."
+    },
+    {
+      "id": 14,
+      "topic": "Menu Pricing Strategy",
+      "type": "multiple_choice",
+      "question": "What is the basic formula the lecture gives for turning food cost into a menu price?",
+      "options": [
+        "Menu Price = Food Cost + GST",
+        "Menu Price = Food Cost ÷ Target Food-Cost %",
+        "Menu Price = Food Cost × 2",
+        "Menu Price = Food Cost − Wastage"
+      ],
+      "correct_answer": "Menu Price = Food Cost ÷ Target Food-Cost %",
+      "explanation": "Dividing food cost by your target food-cost percentage gives the price needed to hit that target."
+    },
+    {
+      "id": 15,
+      "topic": "Menu Pricing Strategy",
+      "type": "multiple_choice",
+      "question": "What is \"differential pricing\" as described in the lecture?",
+      "options": [
+        "Charging every customer a different price",
+        "Offering an inexpensive, smaller entry-level product alongside regular-priced options, without forcing every item to carry the same low price",
+        "Changing prices daily based on demand",
+        "Giving discounts to loyal customers only"
+      ],
+      "correct_answer": "Offering an inexpensive, smaller entry-level product alongside regular-priced options, without forcing every item to carry the same low price",
+      "explanation": "E.g. a ₹10 classic/plain chai in a smaller serving size, alongside ₹15–18 specialty varieties."
+    },
+    {
+      "id": 16,
+      "topic": "Menu Pricing Strategy",
+      "type": "multiple_choice",
+      "question": "If a location can't support a higher price for its core beverage, what alternative strategy does the lecture suggest?",
+      "options": [
+        "Lower the quality of ingredients",
+        "Use a lower-priced beverage as an entry product and compensate with higher-margin snacks or add-ons",
+        "Close the business",
+        "Ignore margin and focus on volume only"
+      ],
+      "correct_answer": "Use a lower-priced beverage as an entry product and compensate with higher-margin snacks or add-ons",
+      "explanation": "A lower-margin beverage can be balanced by a higher-margin snack, keeping the overall mix healthy."
+    },
+    {
+      "id": 17,
+      "topic": "Menu Pricing Strategy",
+      "type": "multiple_choice",
+      "question": "When introducing a specialty/premium tea priced higher than the base tea, what pricing mistake does the lecture specifically warn against?",
+      "options": [
+        "Pricing it exactly the same as the base tea",
+        "Simply doubling the base price",
+        "Pricing it lower than the base tea",
+        "Not offering a specialty variant at all"
+      ],
+      "correct_answer": "Simply doubling the base price",
+      "explanation": "If the base tea is ₹10, the lecture suggests ₹13 or ₹15 for a specialty version — not jumping straight to ₹20."
+    },
+    {
+      "id": 18,
+      "topic": "Menu Pricing Strategy",
+      "type": "true_false",
+      "question": "True or False: According to the lecture, menu pricing should consider your target customer, local purchasing power, competitor pricing, expected sales volume, location, and product quality — not just cost.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct_answer": "True",
+      "explanation": "Pricing is a balance between what the customer is willing to pay and what the business needs to earn."
+    },
+    {
+      "id": 19,
+      "topic": "Building & Using the Calculator",
+      "type": "multiple_choice",
+      "question": "Once you build a food-cost calculator for one menu item, what does the lecture say to do for other items?",
+      "options": [
+        "Start over from scratch each time",
+        "Duplicate the format and swap in different ingredients — the same tool works for any recipe",
+        "Hire a separate accountant for each item",
+        "Use estimates instead of the calculator"
+      ],
+      "correct_answer": "Duplicate the format and swap in different ingredients — the same tool works for any recipe",
+      "explanation": "If your menu has ten varieties of tea, create the calculation once and change only the ingredients that differ."
+    },
+    {
+      "id": 20,
+      "topic": "Building & Using the Calculator",
+      "type": "multiple_choice",
+      "question": "What core sequence does the lecture describe for costing any recipe?",
+      "options": [
+        "Recipe → Quantity of each ingredient → Ingredient price → Cost per serving → Wastage → Total food cost",
+        "Recipe → Menu design → Marketing → Sales",
+        "Ingredient price → Recipe → Profit → Marketing",
+        "Wastage → Recipe → Price → Sales"
+      ],
+      "correct_answer": "Recipe → Quantity of each ingredient → Ingredient price → Cost per serving → Wastage → Total food cost",
+      "explanation": "This gives a standard, repeatable cost for each menu item."
+    },
+    {
+      "id": 21,
+      "topic": "Building & Using the Calculator",
+      "type": "multiple_choice",
+      "question": "For a snack like bajji or bonda, how does the lecture say oil cost per piece should be calculated?",
+      "options": [
+        "Estimate a flat rate per snack regardless of oil used",
+        "Divide the total oil cost by the number of pieces produced from that oil",
+        "Ignore oil cost since it's negligible",
+        "Charge oil cost only once per day"
+      ],
+      "correct_answer": "Divide the total oil cost by the number of pieces produced from that oil",
+      "explanation": "Calculate how many pieces one litre of oil produces, then divide the oil cost by that number."
+    },
+    {
+      "id": 22,
+      "topic": "Building & Using the Calculator",
+      "type": "multiple_choice",
+      "question": "For black tea costing, what does the lecture say should change compared to the standard milk-tea recipe?",
+      "options": [
+        "Add more sugar",
+        "Remove the milk and use water alone",
+        "Use a different type of tea powder",
+        "Double the tea powder quantity"
+      ],
+      "correct_answer": "Remove the milk and use water alone",
+      "explanation": "Black tea removes milk entirely and uses water (e.g. 100 ml) instead."
+    },
+    {
+      "id": 23,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "What does the lecture recommend regarding accuracy on Day One of a new outlet's food-cost tracking?",
+      "options": [
+        "Expect perfectly accurate numbers immediately",
+        "Accept that accurate food-cost numbers take time (often three to six months) to stabilise, while still starting to monitor right away",
+        "Wait six months before tracking anything",
+        "Use only monthly tracking from the start"
+      ],
+      "correct_answer": "Accept that accurate food-cost numbers take time (often three to six months) to stabilise, while still starting to monitor right away",
+      "explanation": "Don't expect perfect numbers on day one, but also don't postpone monitoring indefinitely."
+    },
+    {
+      "id": 24,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "What should a simple daily report include, according to the lecture?",
+      "options": [
+        "Only total sales",
+        "Cash sales, digital payments, total sales, petty-cash expenses, and ingredient/other purchases",
+        "Only ingredient purchases",
+        "A full profit-and-loss statement"
+      ],
+      "correct_answer": "Cash sales, digital payments, total sales, petty-cash expenses, and ingredient/other purchases",
+      "explanation": "Keep this in a simple Excel sheet — no need to start with complicated POS/restaurant-management systems."
+    },
+    {
+      "id": 25,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "Which ingredients does the lecture say to focus on first when monitoring food cost?",
+      "options": [
+        "All ingredients equally, no matter how minor",
+        "The core ingredients that make up most of the cost",
+        "Only packaging materials",
+        "Only ingredients that are wasted"
+      ],
+      "correct_answer": "The core ingredients that make up most of the cost",
+      "explanation": "Focusing on core ingredients first keeps monitoring manageable without getting lost in minor items."
+    },
+    {
+      "id": 26,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "What comparison does the lecture recommend making on a weekly basis?",
+      "options": [
+        "Weekly consumption vs. weekly sales",
+        "Daily temperature vs. sales",
+        "Staff attendance vs. revenue",
+        "Rent vs. marketing spend"
+      ],
+      "correct_answer": "Weekly consumption vs. weekly sales",
+      "explanation": "Comparing actual consumption against actual sales each week is the core monitoring habit."
+    },
+    {
+      "id": 27,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "Along with purchases, what two stock figures are needed to calculate food consumed?",
+      "options": [
+        "Opening stock and closing stock",
+        "Maximum stock and minimum stock",
+        "Wasted stock and sold stock",
+        "Ordered stock and delivered stock"
+      ],
+      "correct_answer": "Opening stock and closing stock",
+      "explanation": "Food Consumed = Opening Stock + Purchases − Closing Stock."
+    },
+    {
+      "id": 28,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "According to the lecture, why does weekly monitoring matter?",
+      "options": [
+        "It's a legal requirement",
+        "It catches discrepancies and issues early, before they compound over a longer period",
+        "It replaces the need for any daily recording",
+        "It's only useful for large chains"
+      ],
+      "correct_answer": "It catches discrepancies and issues early, before they compound over a longer period",
+      "explanation": "Weekly monitoring surfaces problems while they're still small and easy to correct."
+    },
+    {
+      "id": 29,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "What does the lecture suggest about staff accountability and food-cost monitoring?",
+      "options": [
+        "Monitoring has nothing to do with staff behaviour",
+        "Regularly tracking food cost creates accountability, since deviations from standard recipes or wastage become visible",
+        "Staff should never be told about food-cost targets",
+        "Accountability only matters for management, not staff"
+      ],
+      "correct_answer": "Regularly tracking food cost creates accountability, since deviations from standard recipes or wastage become visible",
+      "explanation": "If staff use more milk than the recipe specifies, or wastage rises, monitoring makes that visible."
+    },
+    {
+      "id": 30,
+      "topic": "Daily & Weekly Monitoring",
+      "type": "multiple_choice",
+      "question": "What is the lecture's advice on starting a monitoring system?",
+      "options": [
+        "Build the most complex, comprehensive system possible from day one",
+        "Start with a simple system (weekly first), and add complexity like monthly tracking later",
+        "Skip monitoring until the business is profitable",
+        "Only monitor once a year"
+      ],
+      "correct_answer": "Start with a simple system (weekly first), and add complexity like monthly tracking later",
+      "explanation": "\"Weekly first, monthly later\" — keep the first system simple."
+    },
+    {
+      "id": 31,
+      "topic": "The Operating Cycle & Key Formulas",
+      "type": "multiple_choice",
+      "question": "Which of these correctly lists the lecture's 9-step basic operating cycle, in order?",
+      "options": [
+        "Record sales → Record purchases/expenses → Track opening/closing stock → Calculate consumption → Calculate food cost % → Compare with target → Investigate discrepancies → Correct the problem → Repeat every week",
+        "Record sales → Set menu prices → Hire staff → Advertise → Repeat monthly",
+        "Calculate profit → Record sales → Advertise → Repeat",
+        "Track stock → Set prices → Ignore wastage → Repeat annually"
+      ],
+      "correct_answer": "Record sales → Record purchases/expenses → Track opening/closing stock → Calculate consumption → Calculate food cost % → Compare with target → Investigate discrepancies → Correct the problem → Repeat every week",
+      "explanation": "This nine-step cycle is described as the foundation of food-cost management."
+    },
+    {
+      "id": 32,
+      "topic": "The Operating Cycle & Key Formulas",
+      "type": "multiple_choice",
+      "question": "What is the formula for Food Cost %, as given in the lecture?",
+      "options": [
+        "Food Consumed − Sales",
+        "Food Consumed ÷ Sales × 100",
+        "Sales ÷ Food Consumed × 100",
+        "Food Consumed × Sales"
+      ],
+      "correct_answer": "Food Consumed ÷ Sales × 100",
+      "explanation": "This is one of the key numbers to remember from the lecture."
+    },
+    {
+      "id": 33,
+      "topic": "The Operating Cycle & Key Formulas",
+      "type": "multiple_choice",
+      "question": "What is the formula for Gross Margin, as given in the lecture?",
+      "options": [
+        "100% − Food-Cost %",
+        "Food Cost % + 100%",
+        "Food Cost % × 2",
+        "Sales − Food Cost"
+      ],
+      "correct_answer": "100% − Food-Cost %",
+      "explanation": "Gross margin is simply the complement of your food-cost percentage."
+    },
+    {
+      "id": 34,
+      "topic": "Special Topics: Inventory & GST",
+      "type": "multiple_choice",
+      "question": "How does the lecture describe inventory such as tea powder, flasks, and sugar held for ongoing operations?",
+      "options": [
+        "It should be fully included in each item's food-cost calculation",
+        "It should be treated as working capital, separate from an individual menu item's food-cost calculation",
+        "It should be ignored entirely",
+        "It should only be counted once a year"
+      ],
+      "correct_answer": "It should be treated as working capital, separate from an individual menu item's food-cost calculation",
+      "explanation": "Inventory/working capital ≠ food-cost calculation for an individual menu item — don't dump the value of all inventory into a single item's costing."
+    },
+    {
+      "id": 35,
+      "topic": "Special Topics: Inventory & GST",
+      "type": "multiple_choice",
+      "question": "What caution does the lecture give regarding the ₹20 lakh GST threshold mentioned in the source material?",
+      "options": [
+        "It's a universal rule that applies to every business",
+        "It should not be treated as a universal rule — GST treatment depends on the nature of the business, registration, turnover, and other factors, so current rules should be checked",
+        "GST never applies to food businesses",
+        "The threshold guarantees GST exemption for all small businesses"
+      ],
+      "correct_answer": "It should not be treated as a universal rule — GST treatment depends on the nature of the business, registration, turnover, and other factors, so current rules should be checked",
+      "explanation": "Always check the current GST rules applicable to your business and location rather than relying on a single rule of thumb."
+    },
+    {
+      "id": 36,
+      "topic": "Special Topics: Inventory & GST",
+      "type": "multiple_choice",
+      "question": "What does the lecture say about milk-fat proportion when preparing tea?",
+      "options": [
+        "The milk proportion is always fixed regardless of fat content",
+        "With higher-fat milk (e.g. 6% fat), a lower proportion of milk is used than with lower-fat milk (e.g. 4.5% fat), and the exact ratio depends on taste and customer expectations",
+        "Fat content has no effect on the recipe",
+        "Only 4.5% fat milk should ever be used"
+      ],
+      "correct_answer": "With higher-fat milk (e.g. 6% fat), a lower proportion of milk is used than with lower-fat milk (e.g. 4.5% fat), and the exact ratio depends on taste and customer expectations",
+      "explanation": "An example of adjusting a recipe according to ingredient characteristics, rather than applying one fixed rule."
+    }
+  ]
+}
