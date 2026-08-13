@@ -1,0 +1,254 @@
+```json
+{
+  "quizId": "food-business-maths-starter",
+  "title": "Food Business Maths Starter Quiz",
+  "description": "A beginner-friendly quiz to help food business owners practise essential sales, costing, stock, pricing, and profit calculations.",
+  "calculatorAllowed": true,
+  "questions": [
+    {
+      "id": 1,
+      "category": "sales",
+      "question": "You sell 20 cups of tea at ₹20 each. What are your total sales?",
+      "type": "number",
+      "answer": 400,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 2,
+      "category": "sales",
+      "question": "You sell 35 sandwiches at ₹60 each. What are your total sales?",
+      "type": "number",
+      "answer": 2100,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 3,
+      "category": "sales",
+      "question": "A customer buys 2 teas at ₹20 each and 1 snack at ₹50. What is their bill?",
+      "type": "number",
+      "answer": 90,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 4,
+      "category": "sales",
+      "question": "You earn ₹4,500 on Monday and ₹5,200 on Tuesday. What are your sales across both days?",
+      "type": "number",
+      "answer": 9700,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 5,
+      "category": "sales",
+      "question": "Your target for the day is ₹10,000. You have sold ₹7,400. How much more do you need to sell?",
+      "type": "number",
+      "answer": 2600,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 6,
+      "category": "sales",
+      "question": "You sell 80 cups of tea in a day. If each cup is ₹15, what are daily tea sales?",
+      "type": "number",
+      "answer": 1200,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 7,
+      "category": "food_cost",
+      "question": "One tea costs ₹7 in ingredients and sells for ₹20. How much money is left per tea before rent, salaries, and other expenses?",
+      "type": "number",
+      "answer": 13,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 8,
+      "category": "food_cost",
+      "question": "You sell 100 teas at ₹20 each. The ingredients for all 100 teas cost ₹700. What are your total sales?",
+      "type": "number",
+      "answer": 2000,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 9,
+      "category": "food_cost",
+      "question": "Using sales of ₹2,000 and ingredient costs of ₹700, what percentage of sales was spent on ingredients?",
+      "type": "number",
+      "formulaHint": "(Ingredient cost ÷ Sales) × 100",
+      "answer": 35,
+      "answerUnit": "percent"
+    },
+    {
+      "id": 10,
+      "category": "stock",
+      "question": "You buy ingredients worth ₹3,000 and use ₹2,400 of them this week. How much ingredient stock remains?",
+      "type": "number",
+      "answer": 600,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 11,
+      "category": "food_cost",
+      "question": "A sandwich sells for ₹80. Its ingredients cost ₹28. How much money is left from one sandwich before other expenses?",
+      "type": "number",
+      "answer": 52,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 12,
+      "category": "food_cost",
+      "question": "You sell 50 sandwiches. Each uses ingredients worth ₹28. What is the total ingredient cost?",
+      "type": "number",
+      "answer": 1400,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 13,
+      "category": "sales",
+      "question": "You sell 50 sandwiches at ₹80 each. What are total sales?",
+      "type": "number",
+      "answer": 4000,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 14,
+      "category": "food_cost",
+      "question": "Ingredient cost is ₹1,400 and sales are ₹4,000. What is the food-cost percentage?",
+      "type": "number",
+      "formulaHint": "(Ingredient cost ÷ Sales) × 100",
+      "answer": 35,
+      "answerUnit": "percent"
+    },
+    {
+      "id": 15,
+      "category": "wastage",
+      "question": "You bought ₹5,000 of stock. ₹300 of it spoiled or was wasted. What percentage of the stock was wasted?",
+      "type": "number",
+      "formulaHint": "(Wastage ÷ Stock purchased) × 100",
+      "answer": 6,
+      "answerUnit": "percent"
+    },
+    {
+      "id": 16,
+      "category": "stock",
+      "question": "You begin the month with stock worth ₹2,000. You purchase ₹8,000 more. At the end of the month, stock worth ₹1,500 remains. What was the value of stock consumed?",
+      "type": "number",
+      "formulaHint": "Opening stock + Purchases − Closing stock",
+      "answer": 8500,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 17,
+      "category": "wastage",
+      "question": "You make 40 cups of tea, but 3 are spilled or given away accidentally. How many cups can you still sell?",
+      "type": "number",
+      "answer": 37,
+      "answerUnit": "cups"
+    },
+    {
+      "id": 18,
+      "category": "wastage",
+      "question": "You make 100 snack portions. Five are wasted. If each portion could have sold for ₹40, how much sales value was lost?",
+      "type": "number",
+      "answer": 200,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 19,
+      "category": "fixed_costs",
+      "question": "Monthly rent is ₹30,000. What is the rent per day in a 30-day month?",
+      "type": "number",
+      "answer": 1000,
+      "answerUnit": "INR per day"
+    },
+    {
+      "id": 20,
+      "category": "fixed_costs",
+      "question": "You have two staff members. Each earns ₹15,000 per month. What is the monthly salary cost?",
+      "type": "number",
+      "answer": 30000,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 21,
+      "category": "fixed_costs",
+      "question": "Rent is ₹30,000, salaries are ₹30,000, and utilities are ₹10,000 per month. What are total fixed costs?",
+      "type": "number",
+      "answer": 70000,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 22,
+      "category": "fixed_costs",
+      "question": "Your monthly sales are ₹3,00,000. Your total fixed costs are ₹70,000. What percentage of sales do fixed costs represent?",
+      "type": "number",
+      "formulaHint": "(Fixed costs ÷ Sales) × 100",
+      "answer": 23.33,
+      "acceptedRange": {
+        "min": 23.2,
+        "max": 23.4
+      },
+      "answerUnit": "percent"
+    },
+    {
+      "id": 23,
+      "category": "pricing",
+      "question": "A tea sells for ₹10 but costs ₹7 to make. Why might this be an unsafe price in a high-rent location?",
+      "type": "multiple_choice",
+      "options": [
+        "It leaves only ₹3 before rent, salaries, and other expenses.",
+        "Tea cannot be sold in high-rent locations.",
+        "The ingredient cost is higher than the selling price.",
+        "High-rent locations do not need profit."
+      ],
+      "answer": "It leaves only ₹3 before rent, salaries, and other expenses."
+    },
+    {
+      "id": 24,
+      "category": "pricing",
+      "question": "A snack sells for ₹100 and costs ₹70 to make. A tea sells for ₹25 and costs ₹8 to make. Which item leaves more money per sale before other expenses?",
+      "type": "multiple_choice",
+      "options": [
+        "The snack, because it leaves ₹30.",
+        "The tea, because it leaves ₹17.",
+        "Both leave the same amount.",
+        "There is not enough information."
+      ],
+      "answer": "The snack, because it leaves ₹30."
+    },
+    {
+      "id": 25,
+      "category": "sales",
+      "question": "You sell 60 teas at ₹25 and 30 snacks at ₹100. What are your total sales for the day?",
+      "type": "number",
+      "answer": 4500,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 26,
+      "category": "food_cost",
+      "question": "For the same day: tea ingredients cost ₹8 each and snack ingredients cost ₹70 each. What is the total ingredient cost?",
+      "type": "number",
+      "answer": 2580,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 27,
+      "category": "profit",
+      "question": "Sales are ₹4,500 and ingredient costs are ₹2,580. How much remains after ingredient costs, before rent, salaries, wastage, commissions, and other expenses?",
+      "type": "number",
+      "answer": 1920,
+      "answerUnit": "INR"
+    },
+    {
+      "id": 28,
+      "category": "sales_target",
+      "question": "You want ₹12,000 in daily sales. If your average customer bill is ₹120, how many customer bills do you need in one day?",
+      "type": "number",
+      "formulaHint": "Sales target ÷ Average customer bill",
+      "answer": 100,
+      "answerUnit": "customer bills"
+    }
+  ]
+}
+```

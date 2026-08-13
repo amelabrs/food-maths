@@ -1,0 +1,354 @@
+{
+  "quiz_title": "Food Cost Maths — Practice Quiz",
+  "description": "26 questions building from simple multiplication up to full food-cost and menu-pricing calculations, based on the Teapreneur food-cost-calculator lecture material.",
+  "source": "Food_Cost_Calculator_Lecture_final.docx",
+  "levels": [
+    "Warm-up",
+    "Ingredient cost",
+    "Totals & wastage",
+    "Menu pricing",
+    "Stock & monitoring",
+    "Full scenario"
+  ],
+  "question_count": 26,
+  "questions": [
+    {
+      "id": 1,
+      "level": "Warm-up",
+      "prompt": "Milk costs ₹0.048 per ml. A recipe uses 50 ml. What's 50 × 0.048?",
+      "hint": "Multiply the two numbers. Line them up like: 50 × 0.048.",
+      "solution_steps": [
+        "50 × 0.048",
+        "= 2.4"
+      ],
+      "answer": 2.4,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 2,
+      "level": "Warm-up",
+      "prompt": "Ginger costs ₹0.15 per gram. A recipe uses 3 grams. What's 3 × 0.15?",
+      "hint": "Multiply quantity by cost per gram.",
+      "solution_steps": [
+        "3 × 0.15",
+        "= 0.45"
+      ],
+      "answer": 0.45,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 3,
+      "level": "Warm-up",
+      "prompt": "What is 20% of ₹300?",
+      "hint": "20% means 20 out of 100. Try: 300 × 0.20",
+      "solution_steps": [
+        "300 × 0.20",
+        "= 60"
+      ],
+      "answer": 60,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 4,
+      "level": "Warm-up",
+      "prompt": "Write 30% as a decimal (e.g. 50% = 0.50).",
+      "hint": "Move the decimal point two places left.",
+      "solution_steps": [
+        "30 ÷ 100",
+        "= 0.30"
+      ],
+      "answer": 0.3,
+      "unit": "",
+      "tolerance": 0.05
+    },
+    {
+      "id": 5,
+      "level": "Warm-up",
+      "prompt": "If your food cost is 30% of your menu price, what's your gross margin? (100% − 30%)",
+      "hint": "Just subtract from 100.",
+      "solution_steps": [
+        "100 − 30",
+        "= 70"
+      ],
+      "answer": 70,
+      "unit": "%",
+      "tolerance": 0.05
+    },
+    {
+      "id": 6,
+      "level": "Ingredient cost",
+      "prompt": "Water costs ₹0.00175 per ml. A recipe uses 50 ml. What's the cost? (Round to 4 decimals)",
+      "hint": "Cost = rate × quantity.",
+      "solution_steps": [
+        "50 × 0.00175",
+        "= 0.0875"
+      ],
+      "answer": 0.0875,
+      "unit": "₹",
+      "tolerance": 0.001
+    },
+    {
+      "id": 7,
+      "level": "Ingredient cost",
+      "prompt": "Tea powder costs ₹0.30 per gram. A recipe uses 3 grams. What's the cost?",
+      "hint": "Cost = rate × quantity.",
+      "solution_steps": [
+        "3 × 0.30",
+        "= 0.90"
+      ],
+      "answer": 0.9,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 8,
+      "level": "Ingredient cost",
+      "prompt": "Sugar costs ₹0.04 per gram. A recipe uses 6 grams. What's the cost?",
+      "hint": "Cost = rate × quantity.",
+      "solution_steps": [
+        "6 × 0.04",
+        "= 0.24"
+      ],
+      "answer": 0.24,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 9,
+      "level": "Ingredient cost",
+      "prompt": "Butter costs ₹450 per kg. A recipe uses 0.01 of a kg (10g). What's the cost?",
+      "hint": "Cost = rate × quantity, even when the quantity is a fraction like 0.01.",
+      "solution_steps": [
+        "450 × 0.01",
+        "= 4.50"
+      ],
+      "answer": 4.5,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 10,
+      "level": "Ingredient cost",
+      "prompt": "Onion costs ₹40 per kg. One serving uses 0.02 of a kg (20g). What's the cost?",
+      "hint": "Cost = rate × quantity.",
+      "solution_steps": [
+        "40 × 0.02",
+        "= 0.80"
+      ],
+      "answer": 0.8,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 11,
+      "level": "Totals & wastage",
+      "prompt": "Add these three ingredient costs: ₹2.40 + ₹0.0875 + ₹0.90. What's the total?",
+      "hint": "Line the numbers up by their decimal points and add.",
+      "solution_steps": [
+        "2.40 + 0.0875 + 0.90",
+        "= 3.3875"
+      ],
+      "answer": 3.3875,
+      "unit": "₹",
+      "tolerance": 0.01
+    },
+    {
+      "id": 12,
+      "level": "Totals & wastage",
+      "prompt": "Add these two ingredient costs: ₹0.45 + ₹0.24. What's the total?",
+      "hint": "Simple addition.",
+      "solution_steps": [
+        "0.45 + 0.24",
+        "= 0.69"
+      ],
+      "answer": 0.69,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 13,
+      "level": "Totals & wastage",
+      "prompt": "Your main ingredients total ₹2.4875 and your extra ingredients total ₹0.69. What's the combined total?",
+      "hint": "Add the two subtotals together.",
+      "solution_steps": [
+        "2.4875 + 0.69",
+        "= 3.1775"
+      ],
+      "answer": 3.1775,
+      "unit": "₹",
+      "tolerance": 0.01
+    },
+    {
+      "id": 14,
+      "level": "Totals & wastage",
+      "prompt": "Wastage is 5% of ₹3.1775. What's the wastage amount? (Round to 2 decimals)",
+      "hint": "Multiply by 0.05, then round to 2 decimals.",
+      "solution_steps": [
+        "3.1775 × 0.05",
+        "= 0.159, rounds to 0.16"
+      ],
+      "answer": 0.16,
+      "unit": "₹",
+      "tolerance": 0.005
+    },
+    {
+      "id": 15,
+      "level": "Totals & wastage",
+      "prompt": "Your ingredients total ₹3.1775 and wastage adds ₹0.16. What's your total food cost?",
+      "hint": "Add the two numbers.",
+      "solution_steps": [
+        "3.1775 + 0.16",
+        "= 3.3375"
+      ],
+      "answer": 3.3375,
+      "unit": "₹",
+      "tolerance": 0.01
+    },
+    {
+      "id": 16,
+      "level": "Menu pricing",
+      "prompt": "Your food cost is ₹3.3375. Your target food-cost % is 30%. What should you charge? (Menu price = food cost ÷ target %)",
+      "hint": "Divide the food cost by 0.30.",
+      "solution_steps": [
+        "3.3375 ÷ 0.30",
+        "= 11.13 (round to ₹11)"
+      ],
+      "answer": 11.13,
+      "unit": "₹",
+      "tolerance": 0.5
+    },
+    {
+      "id": 17,
+      "level": "Menu pricing",
+      "prompt": "Same food cost, ₹3.3375, but this time your target is 40%. What should you charge?",
+      "hint": "Divide the food cost by 0.40.",
+      "solution_steps": [
+        "3.3375 ÷ 0.40",
+        "= 8.34 (round to ₹8)"
+      ],
+      "answer": 8.34,
+      "unit": "₹",
+      "tolerance": 0.5
+    },
+    {
+      "id": 18,
+      "level": "Menu pricing",
+      "prompt": "If your food-cost target is 30%, what's your gross margin %?",
+      "hint": "100% minus the food-cost %.",
+      "solution_steps": [
+        "100 − 30",
+        "= 70"
+      ],
+      "answer": 70,
+      "unit": "%",
+      "tolerance": 0.05
+    },
+    {
+      "id": 19,
+      "level": "Menu pricing",
+      "prompt": "If your food-cost target is 40%, what's your gross margin %?",
+      "hint": "100% minus the food-cost %.",
+      "solution_steps": [
+        "100 − 40",
+        "= 60"
+      ],
+      "answer": 60,
+      "unit": "%",
+      "tolerance": 0.05
+    },
+    {
+      "id": 20,
+      "level": "Menu pricing",
+      "prompt": "A café made ₹5,00,000 revenue and ₹1,65,000 EBITDA. What % of revenue is that? (EBITDA ÷ revenue × 100)",
+      "hint": "Divide EBITDA by revenue, then multiply by 100.",
+      "solution_steps": [
+        "1,65,000 ÷ 5,00,000",
+        "= 0.33, × 100 = 33%"
+      ],
+      "answer": 33,
+      "unit": "%",
+      "tolerance": 0.05
+    },
+    {
+      "id": 21,
+      "level": "Stock & monitoring",
+      "prompt": "Opening stock ₹10,000. Purchases ₹25,000. Closing stock ₹8,000. What's your food consumed? (Opening + Purchases − Closing)",
+      "hint": "Add the first two, then subtract the closing stock.",
+      "solution_steps": [
+        "10,000 + 25,000 − 8,000",
+        "= 27,000"
+      ],
+      "answer": 27000,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 22,
+      "level": "Stock & monitoring",
+      "prompt": "Weekly sales are ₹70,000 and food consumed is ₹27,000. What's your food cost %? (Consumed ÷ sales × 100, round to 1 decimal)",
+      "hint": "Divide consumed by sales, then multiply by 100.",
+      "solution_steps": [
+        "27,000 ÷ 70,000",
+        "= 0.386, × 100 = 38.6%"
+      ],
+      "answer": 38.6,
+      "unit": "%",
+      "tolerance": 0.2
+    },
+    {
+      "id": 23,
+      "level": "Stock & monitoring",
+      "prompt": "Your daily revenue is ₹10,000. What's your revenue over 7 days?",
+      "hint": "Multiply by 7.",
+      "solution_steps": [
+        "10,000 × 7",
+        "= 70,000"
+      ],
+      "answer": 70000,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 24,
+      "level": "Stock & monitoring",
+      "prompt": "Your target food cost % is 30% but your actual is 38.6%. By how many percentage points are you over target?",
+      "hint": "Subtract the target from the actual.",
+      "solution_steps": [
+        "38.6 − 30",
+        "= 8.6"
+      ],
+      "answer": 8.6,
+      "unit": "points",
+      "tolerance": 0.2
+    },
+    {
+      "id": 25,
+      "level": "Full scenario",
+      "prompt": "A snack costs ₹4 to make in total. Your target food cost is 25%. What should you charge?",
+      "hint": "Menu price = food cost ÷ target %.",
+      "solution_steps": [
+        "4 ÷ 0.25",
+        "= 16"
+      ],
+      "answer": 16,
+      "unit": "₹",
+      "tolerance": 0.05
+    },
+    {
+      "id": 26,
+      "level": "Full scenario",
+      "prompt": "Your rent is ₹45,000 and your monthly revenue is ₹3,00,000. What % of revenue does rent take up?",
+      "hint": "Divide rent by revenue, then multiply by 100.",
+      "solution_steps": [
+        "45,000 ÷ 3,00,000",
+        "= 0.15, × 100 = 15%"
+      ],
+      "answer": 15,
+      "unit": "%",
+      "tolerance": 0.05
+    }
+  ]
+}

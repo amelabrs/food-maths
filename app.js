@@ -1,34 +1,49 @@
-/* Food Business Maths — Starter Quiz */
+/* Food Maths — quiz engine (drives every quiz in QUIZZES) */
 
 const $ = (id) => document.getElementById(id);
-const STORE_KEY = "foodMaths.v1";
+const STORE_KEY = "foodMaths.v2";
 
 const state = {
-  selectedParts: new Set(PARTS.map(p => p.id)),
-  queue: [],        // questions for this run
+  quiz: null,
+  selected: new Set(),   // selected section ids
+  queue: [],             // questions for this run
   index: 0,
-  attempts: 0,      // attempts on the current question
-  results: {},      // question number -> "clean" | "second" | "missed"
-  chosen: null      // selected option index for choice questions
+  attempts: 0,           // attempts on the current question
+  results: {},           // question number -> "clean" | "second" | "missed"
+  chosen: null,          // selected option index for choice questions
+  shaky: []
 };
 
-/* ---------------- helpers ---------------- */
+/* ---------------- number helpers ---------------- */
 
 // Indian digit grouping: 1,20,000
 function groupIndian(numStr) {
-  const [whole, frac] = numStr.split(".");
-  if (whole.length <= 3) return frac ? `${whole}.${frac}` : whole;
-  const last3 = whole.slice(-3);
-  const rest = whole.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ",");
-  const out = `${rest},${last3}`;
-  return frac ? `${out}.${frac}` : out;
+  const neg = numStr.startsWith("-");
+  const body = neg ? numStr.slice(1) : numStr;
+  const [whole, frac] = body.split(".");
+  let out;
+  if (whole.length <= 3) {
+    out = whole;
+  } else {
+    const last3 = whole.slice(-3);
+    const rest = whole.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+    out = `${rest},${last3}`;
+  }
+  if (frac) out += `.${frac}`;
+  return neg ? `-${out}` : out;
+}
+
+// Keep the decimals the answer actually has (0.0875 stays 0.0875), max 4.
+function niceNumber(v) {
+  const rounded = Math.round(v * 10000) / 10000;
+  return groupIndian(String(rounded));
 }
 
 function formatAnswer(q) {
-  const v = q.answer;
-  const num = groupIndian(String(Number.isInteger(v) ? v : v.toFixed(1)));
+  const num = niceNumber(q.answer);
   if (q.unit === "rupees") return `₹${num}`;
-  if (q.unit === "percent") return `${q.tolerance ? "about " : ""}${num}%`;
+  if (q.unit === "percent") return `${num}%`;
+  if (q.unit === "points") return `${num} percentage points`;
   return num;
 }
 
@@ -44,8 +59,19 @@ function toleranceFor(q) {
   return q.unit === "percent" ? 0.15 : 0.005;
 }
 
-function allQuestions() {
-  return PARTS.flatMap(p => p.questions.map(q => ({ ...q, partId: p.id, partTitle: p.title })));
+function workingText(q) {
+  return q.steps ? q.steps.join("  ") : q.working;
+}
+
+/* ---------------- data helpers ---------------- */
+
+function quizQuestions(quiz) {
+  return quiz.sections.flatMap(s =>
+    s.questions.map(q => ({ ...q, sectionId: s.id, sectionTitle: s.title })));
+}
+
+function selectedQuestions() {
+  return quizQuestions(state.quiz).filter(q => state.selected.has(q.sectionId));
 }
 
 function load() {
@@ -62,55 +88,81 @@ function show(screenId) {
   window.scrollTo(0, 0);
 }
 
-/* ---------------- start screen ---------------- */
+/* ---------------- home: choose a quiz ---------------- */
 
-function renderParts() {
-  const list = $("part-list");
+function renderHome() {
+  const saved = load();
+  const list = $("quiz-list");
   list.innerHTML = "";
-  PARTS.forEach(p => {
+  QUIZZES.forEach(quiz => {
+    const total = quizQuestions(quiz).length;
+    const best = saved.best && saved.best[quiz.id];
+    const card = document.createElement("button");
+    card.className = "quiz-card";
+    card.innerHTML = `
+      <span class="quiz-icon">${quiz.icon}</span>
+      <span class="quiz-body">
+        <span class="quiz-title">${quiz.title}</span>
+        <span class="quiz-blurb">${quiz.blurb}</span>
+        <span class="quiz-meta">${total} questions · ${quiz.sections.length} ${quiz.sectionWord.toLowerCase()}s${
+          best != null ? ` · best ${best}/${total}` : ""}</span>
+      </span>
+      <span class="quiz-go">→</span>`;
+    card.addEventListener("click", () => openQuiz(quiz));
+    list.appendChild(card);
+  });
+  show("screen-home");
+}
+
+/* ---------------- setup: choose sections ---------------- */
+
+function openQuiz(quiz) {
+  state.quiz = quiz;
+  state.selected = new Set(quiz.sections.map(s => s.id));
+  $("setup-icon").textContent = quiz.icon;
+  $("setup-title").textContent = quiz.title;
+  $("setup-tagline").textContent = quiz.tagline;
+  $("setup-blurb").textContent = quiz.blurb;
+  $("setup-section-label").textContent = `Choose what to practise`;
+  renderSections();
+  show("screen-setup");
+}
+
+function renderSections() {
+  const quiz = state.quiz;
+  const list = $("section-list");
+  list.innerHTML = "";
+  quiz.sections.forEach(s => {
     const btn = document.createElement("button");
-    btn.className = "part-item" + (state.selectedParts.has(p.id) ? " on" : "");
+    btn.className = "part-item" + (state.selected.has(s.id) ? " on" : "");
     btn.innerHTML = `
-      <span class="part-icon">${p.icon}</span>
+      <span class="part-icon">${s.icon}</span>
       <span>
-        <span class="part-name">Part ${p.id}: ${p.title}</span><br>
-        <span class="part-meta">${p.questions.length} questions · ${p.blurb}</span>
+        <span class="part-name">${quiz.sectionWord} ${s.id}: ${s.title}</span><br>
+        <span class="part-meta">${s.questions.length} questions${s.blurb ? ` · ${s.blurb}` : ""}</span>
       </span>
       <span class="part-check">✓</span>`;
     btn.addEventListener("click", () => {
-      if (state.selectedParts.has(p.id)) {
-        if (state.selectedParts.size === 1) return; // keep at least one
-        state.selectedParts.delete(p.id);
+      if (state.selected.has(s.id)) {
+        if (state.selected.size === 1) return; // keep at least one
+        state.selected.delete(s.id);
       } else {
-        state.selectedParts.add(p.id);
+        state.selected.add(s.id);
       }
-      renderParts();
+      renderSections();
       updateStartBtn();
     });
     list.appendChild(btn);
   });
-}
-
-function selectedQuestions() {
-  return allQuestions().filter(q => state.selectedParts.has(q.partId));
+  updateStartBtn();
 }
 
 function updateStartBtn() {
   const n = selectedQuestions().length;
-  $("start-btn").textContent = n === 28
-    ? "Start the quiz → 28 questions"
+  const all = quizQuestions(state.quiz).length;
+  $("start-btn").textContent = n === all
+    ? `Start the quiz → ${all} questions`
     : `Start → ${n} question${n === 1 ? "" : "s"}`;
-}
-
-function renderResumeNote() {
-  const saved = load();
-  const note = $("resume-note");
-  if (saved.best != null && saved.bestOf) {
-    note.textContent = `Your best so far: ${saved.best} out of ${saved.bestOf}.`;
-    note.classList.remove("hidden");
-  } else {
-    note.classList.add("hidden");
-  }
 }
 
 /* ---------------- quiz flow ---------------- */
@@ -131,7 +183,7 @@ function renderQuestion() {
   $("progress-count").textContent = `${state.index + 1} / ${state.queue.length}`;
   $("progress-fill").style.width = `${(state.index / state.queue.length) * 100}%`;
 
-  $("q-part").textContent = `Question ${q.n} · ${q.partTitle}`;
+  $("q-part").textContent = `Question ${q.n} · ${q.sectionTitle}`;
   $("q-text").textContent = q.text;
 
   if (q.formula) {
@@ -144,7 +196,6 @@ function renderQuestion() {
   $("feedback").classList.add("hidden");
   $("next-btn").classList.add("hidden");
   $("check-btn").classList.remove("hidden");
-  $("check-btn").textContent = "Check my answer";
   $("skip-btn").classList.remove("hidden");
 
   if (q.type === "choice") {
@@ -203,11 +254,17 @@ function lockQuestion(q) {
     : "Next question →";
 }
 
-function setFeedback(kind, head, working) {
+function setFeedback(kind, head, body) {
   const fb = $("feedback");
   fb.className = `feedback ${kind}`;
   $("feedback-head").textContent = head;
-  $("feedback-working").textContent = working;
+  $("feedback-working").textContent = body;
+}
+
+function nudgeFor(q) {
+  if (q.hint) return q.hint;
+  if (q.formula) return `Try the formula: ${q.formula}`;
+  return "Read the question once more and check each number.";
 }
 
 function checkAnswer() {
@@ -226,33 +283,30 @@ function checkAnswer() {
     state.results[q.n] = state.attempts === 1 ? "clean" : "second";
     setFeedback("ok",
       state.attempts === 1 ? "Correct 🎉" : "Correct on the second go 👍",
-      `${formatAnswer(q)} — ${q.working}`);
+      `${formatAnswer(q)} — ${workingText(q)}`);
     $("feedback").classList.remove("hidden");
     lockQuestion(q);
     return;
   }
 
   if (state.attempts === 1) {
-    setFeedback("no", "Not quite — have another go",
-      q.formula ? `Try the formula: ${q.formula}` : "Read the question once more and check each number.");
+    setFeedback("no", "Not quite — have another go", nudgeFor(q));
     $("feedback").classList.remove("hidden");
     if (q.type !== "choice") { $("answer-input").select(); $("answer-input").focus(); }
     return;
   }
 
+  reveal(q);
+}
+
+function reveal(q) {
   state.results[q.n] = "missed";
-  setFeedback("no", `The answer is ${formatAnswer(q)}`, q.working);
+  setFeedback("no", `The answer is ${formatAnswer(q)}`, workingText(q));
   $("feedback").classList.remove("hidden");
   lockQuestion(q);
 }
 
-function showMeHow() {
-  const q = state.queue[state.index];
-  state.results[q.n] = "missed";
-  setFeedback("no", `The answer is ${formatAnswer(q)}`, q.working);
-  $("feedback").classList.remove("hidden");
-  lockQuestion(q);
-}
+function showMeHow() { reveal(state.queue[state.index]); }
 
 function nextQuestion() {
   if (state.index === state.queue.length - 1) return finish();
@@ -263,10 +317,12 @@ function nextQuestion() {
 /* ---------------- results ---------------- */
 
 function finish() {
+  const quiz = state.quiz;
   const total = state.queue.length;
-  const correct = state.queue.filter(q => state.results[q.n] === "clean" || state.results[q.n] === "second").length;
+  const correct = state.queue.filter(q => ["clean", "second"].includes(state.results[q.n])).length;
   const clean = state.queue.filter(q => state.results[q.n] === "clean").length;
 
+  $("results-quiz-name").textContent = quiz.title;
   $("score-num").textContent = correct;
   $("score-of").textContent = `/ ${total}`;
 
@@ -280,18 +336,19 @@ function finish() {
         ? "Solid start. The ones below are worth a second pass — they get easier fast."
         : "This is exactly what practice is for. Work through the notes below, then run it again.";
 
-  // per-part breakdown
+  // per-section breakdown
   const bd = $("breakdown");
   bd.innerHTML = "";
-  PARTS.forEach(p => {
-    const qs = state.queue.filter(q => q.partId === p.id);
+  $("breakdown-label").textContent = `How each ${quiz.sectionWord.toLowerCase()} went`;
+  quiz.sections.forEach(s => {
+    const qs = state.queue.filter(q => q.sectionId === s.id);
     if (!qs.length) return;
-    const got = qs.filter(q => state.results[q.n] !== "missed" && state.results[q.n]).length;
+    const got = qs.filter(q => ["clean", "second"].includes(state.results[q.n])).length;
     const row = document.createElement("div");
     row.className = "bd-row";
     row.innerHTML = `
-      <span class="part-icon">${p.icon}</span>
-      <span class="bd-name">${p.title}</span>
+      <span class="part-icon">${s.icon}</span>
+      <span class="bd-name">${s.title}</span>
       <span class="bd-bar"><i style="width:${(got / qs.length) * 100}%"></i></span>
       <span class="bd-score">${got}/${qs.length}</span>`;
     bd.appendChild(row);
@@ -299,6 +356,7 @@ function finish() {
 
   // review anything not answered correctly first time
   const shaky = state.queue.filter(q => state.results[q.n] !== "clean");
+  state.shaky = shaky;
   const block = $("review-block");
   const list = $("review-list");
   list.innerHTML = "";
@@ -311,17 +369,20 @@ function finish() {
       item.className = "review-item";
       item.innerHTML = `
         <p class="review-q"><span class="review-num">Q${q.n}.</span> ${q.text}</p>
-        <p class="review-work"><strong>${formatAnswer(q)}</strong> — ${q.working}</p>`;
+        <p class="review-work"><strong>${formatAnswer(q)}</strong> — ${workingText(q)}</p>`;
       list.appendChild(item);
     });
   }
   $("retry-missed-btn").classList.toggle("hidden", shaky.length === 0);
-  state.shaky = shaky;
 
-  // best score, only for a full 28-question run
-  if (total === 28) {
+  // best score, only for a full run of the quiz
+  if (total === quizQuestions(quiz).length) {
     const saved = load();
-    if (saved.best == null || correct > saved.best) save({ ...saved, best: correct, bestOf: 28 });
+    const best = saved.best || {};
+    if (best[quiz.id] == null || correct > best[quiz.id]) {
+      best[quiz.id] = correct;
+      save({ ...saved, best });
+    }
   }
 
   show("screen-results");
@@ -333,8 +394,10 @@ $("start-btn").addEventListener("click", () => startQuiz(selectedQuestions()));
 $("check-btn").addEventListener("click", checkAnswer);
 $("next-btn").addEventListener("click", nextQuestion);
 $("skip-btn").addEventListener("click", showMeHow);
-$("quit-btn").addEventListener("click", () => { renderResumeNote(); show("screen-start"); });
-$("restart-btn").addEventListener("click", () => { renderResumeNote(); show("screen-start"); });
+$("setup-back-btn").addEventListener("click", renderHome);
+$("quit-btn").addEventListener("click", () => show("screen-setup"));
+$("again-btn").addEventListener("click", () => show("screen-setup"));
+$("home-btn").addEventListener("click", renderHome);
 $("retry-missed-btn").addEventListener("click", () => startQuiz(state.shaky.map(q => ({ ...q }))));
 
 $("answer-input").addEventListener("keydown", (e) => {
@@ -345,12 +408,11 @@ $("answer-input").addEventListener("keydown", (e) => {
   }
 });
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && !$("next-btn").classList.contains("hidden") && $("screen-quiz").classList.contains("active")) {
+  if (e.key === "Enter" && $("screen-quiz").classList.contains("active")
+      && !$("next-btn").classList.contains("hidden")) {
     e.preventDefault();
     nextQuestion();
   }
 });
 
-renderParts();
-updateStartBtn();
-renderResumeNote();
+renderHome();

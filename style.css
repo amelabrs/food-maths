@@ -44,6 +44,7 @@ h1, h2, .score-big { font-family: Fraunces, Georgia, serif; font-weight: 700; }
 
 /* ---------- start screen ---------- */
 .hero { text-align: center; margin: 18px 0 6px; }
+.hero-tight { margin-top: 8px; }
 .hero-badge {
   font-size: 26px;
   letter-spacing: 6px;
@@ -86,6 +87,51 @@ h1 { font-size: 38px; line-height: 1.15; margin: 0 0 6px; letter-spacing: -.5px;
   color: var(--ink-soft);
   margin: 30px 0 12px;
 }
+
+/* quiz picker */
+.quiz-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.quiz-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  padding: 18px 18px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: border-color .15s, transform .1s;
+}
+.quiz-card:hover { border-color: var(--accent); }
+.quiz-card:active { transform: scale(.995); }
+.quiz-icon {
+  font-size: 28px;
+  width: 54px; height: 54px;
+  flex: none;
+  display: grid; place-items: center;
+  background: var(--bg-warm);
+  border-radius: 15px;
+}
+.quiz-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.quiz-title { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 20px; }
+.quiz-blurb { font-size: 14.5px; color: var(--ink-soft); line-height: 1.4; }
+.quiz-meta { font-size: 13px; color: var(--accent); font-weight: 600; margin-top: 3px; }
+.quiz-go { margin-left: auto; flex: none; font-size: 22px; color: var(--ink-soft); }
+
+.back-link {
+  font: inherit;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+}
+.back-link:hover { color: var(--accent); }
 
 .part-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
 .part-item {
@@ -284,7 +330,11 @@ h1 { font-size: 38px; line-height: 1.15; margin: 0 0 6px; letter-spacing: -.5px;
   margin-top: 20px;
 }
 .score-emoji { font-size: 44px; line-height: 1; }
-.score-big { font-size: 52px; line-height: 1.1; margin: 10px 0 4px; }
+.score-quiz {
+  font-size: 13px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--accent); margin-top: 10px;
+}
+.score-big { font-size: 52px; line-height: 1.1; margin: 4px 0 4px; }
 .score-of { font-size: 24px; color: var(--ink-soft); margin-left: 6px; }
 .score-line { margin: 8px 0 0; color: var(--ink-soft); }
 
